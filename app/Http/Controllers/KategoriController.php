@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\InputAspirasi;
+use App\Models\Kategori;
+use Illuminate\Http\Request;
+
+class KategoriController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        return Kategori::all();
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $kategori = Kategori::create([
+            "ket_kategori" => $request->ket_kategori
+        ]);
+
+        return $kategori;
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $kategori = Kategori::findOrFail($id);
+
+        $aspirasis = InputAspirasi::all()->where('id_kategori', $id);
+
+        return [
+            "kategori" => $kategori,
+            "aspirasis" => $aspirasis
+        ];
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $kategori = InputAspirasi::findOrFail($id);
+        $kategori->update($request->all());
+
+        return $kategori;
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        return Kategori::delete($id);
+    }
+}
