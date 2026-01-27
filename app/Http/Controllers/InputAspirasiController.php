@@ -65,6 +65,6 @@ class InputAspirasiController extends Controller
      */
     public function destroy(string $id)
     {
-        return InputAspirasi::delete($id);
+        return InputAspirasi::destroy($id);
     }
 }

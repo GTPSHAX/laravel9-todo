@@ -64,7 +64,7 @@ class KategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $kategori = InputAspirasi::findOrFail($id);
+        $kategori = Kategori::findOrFail($id);
         $kategori->update($request->all());
 
         return $kategori;
@@ -75,6 +75,6 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        return Kategori::delete($id);
+        return Kategori::destroy($id);
     }
 }

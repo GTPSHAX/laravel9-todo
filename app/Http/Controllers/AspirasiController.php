@@ -39,6 +39,7 @@ class AspirasiController extends Controller
     public function show(string $id)
     {
         $aspirasi = Aspirasi::findOrFail($id);
+        return $aspirasi;
     }
 
     /**
@@ -65,6 +66,6 @@ class AspirasiController extends Controller
      */
     public function destroy(string $id)
     {
-        return Aspirasi::delete($id);
+        return Aspirasi::destroy($id);
     }
 }
